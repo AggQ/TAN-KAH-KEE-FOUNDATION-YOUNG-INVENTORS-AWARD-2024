@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Read the CSV file
+df = pd.read_csv('stats.csv')
+
+# Remove '%' sign and convert 'Percentage' column to float
+df['Percentage'] = df['Percentage'].str.rstrip('%').astype(float)
+
+# Plotting
+plt.figure(figsize=(8, 8))
+plt.pie(df['Percentage'], labels=df['Intruder Age Group'], autopct='%1.1f%%', startangle=0)
+plt.axis('equal')
+plt.title('Distribution of Intruder Age Groups in Housebreaking and Related Crimes in Singapore')
+plt.show()
